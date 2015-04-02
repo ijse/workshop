@@ -8,4 +8,5 @@ var app = module.exports = koa();
 app.use(function* () {
   var filename = path.join(__dirname, 'homepage.jade');
   // this.response.body=
+  this.body = jade.renderFile(filename);
 });
