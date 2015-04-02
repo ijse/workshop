@@ -12,6 +12,8 @@ var app = module.exports = koa();
 app.use(function* (next) {
   if (this.request.path !== '/stream') return yield* next;
 
+  this.response.type = "application/javascript";
+  this.body = fs.createReadStream(__filename);
   // this.response.type =
   // this.response.body =
 });
@@ -22,6 +24,9 @@ app.use(function* (next) {
 
 app.use(function* (next) {
   if (this.request.path !== '/json') return yield* next;
+  this.body = {
+      message: 'hello world'
+  }
 
   // this.response.body =
 });
